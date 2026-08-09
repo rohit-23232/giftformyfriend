@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>For Mahi 🌸</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Trebuchet MS", Arial, sans-serif;
+      background: linear-gradient(135deg, #fff4f8, #f3efff, #eefaff);
+      color: #65546b;
+      overflow-x: hidden;
+    }
+
+    /* ---------- BACKGROUND ---------- */
+
+    .background {
+      position: fixed;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .cloud {
+      position: absolute;
+      width: 170px;
+      height: 55px;
+      background: rgba(255,255,255,0.75);
+      border-radius: 50px;
+      animation: moveCloud 25s linear infinite;
+    }
+
+    .cloud::before,
+    .cloud::after {
+      content: "";
+      position: absolute;
+      background: inherit;
+      border-radius: 50%;
+    }
+
+    .cloud::before {
+      width: 75px;
+      height: 75px;
+      left: 30px;
+      top: -35px;
+    }
+
+    .cloud::after {
+      width: 60px;
+      height: 60px;
+      right: 25px;
+      top: -25px;
+    }
+
+    .cloud.one {
+      top: 12%;
+      left: -220px;
+    }
+
+    .cloud.two {
+      top: 45%;
+      left: -300px;
+      transform: scale(.7);
+      animation-duration: 32s;
+      animation-delay: -10s;
+    }
+
+    .cloud.three {
+      top: 75%;
+      left: -250px;
+      transform: scale(.55);
+      animation-duration: 29s;
+      animation-delay: -17s;
+    }
+
+    .star {
+      position: absolute;
+      color: #e6a9ca;
+      font-size: 22px;
+      animation: sparkle 2s infinite ease-in-out;
+    }
+
+    .star:nth-child(4) {
+      top: 15%;
+      left: 12%;
+    }
+
+    .star:nth-child(5) {
+      top: 22%;
+      right: 15%;
+      animation-delay: .5s;
+    }
+
+    .star:nth-child(6) {
+      top: 58%;
+      left: 8%;
+      animation-delay: 1s;
+    }
+
+    .star:nth-child(7) {
+      top: 78%;
+      right: 12%;
+      animation-delay: .8s;
+    }
+
+    @keyframes moveCloud {
+      from {
+        left: -250px;
+      }
+
+      to {
+        left: 110%;
+      }
+    }
+
+    @keyframes sparkle {
+      50% {
+        opacity: .3;
+        transform: scale(.7) rotate(20deg);
+      }
+    }
+
+    /* ---------- COMMON ---------- */
+
+    .screen {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .card {
+      width: min(760px, 100%);
+      padding: 45px 30px;
+      text-align: center;
+
+      background: rgba(255,255,255,.72);
+      border: 2px solid rgba(255,255,255,.8);
+      border-radius: 35px;
+
+      backdrop-filter: blur(12px);
+
+      box-shadow:
+        0 25px 70px rgba(130,100,150,.16);
+    }
+
+    .small-title {
+      font-size: 14px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #a487a9;
+    }
+
+    h1 {
+      font-size: clamp(45px, 10vw, 80px);
+      margin: 15px 0;
+      color: #7b5d82;
+    }
+
+    h2 {
+      font-size: clamp(30px, 7vw, 48px);
+      color: #7b5d82;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 18px;
+      line-height: 1.8;
+    }
+
+    button {
+      border: none;
+      cursor: pointer;
+
+      padding: 15px 28px;
+      border-radius: 50px;
+
+      color: white;
+      background: linear-gradient(135deg, #dd91b8, #9b86d8);
+
+      font-size: 17px;
+      font-weight: bold;
+
+      box-shadow: 0 12px 25px rgba(160,110,160,.25);
+
+      transition: .25s;
+    }
+
+    button:hover {
+      transform: translateY(-3px) scale(1.03);
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    /* ---------- INTRO ---------- */
+
+    .intro-subtitle {
+      max-width: 550px;
+      margin: auto;
+    }
+
+    .doodle {
+      width: 170px;
+      height: 150px;
+      margin: 25px auto;
+      position: relative;
+    }
+
+    .head {
+      position: absolute;
+      width: 100px;
+      height: 90px;
+
+      left: 35px;
+      top: 35px;
+
+      background: #fff8f3;
+      border: 3px solid #685967;
+      border-radius: 50%;
+    }
+
+    .ear {
+      position: absolute;
+
+      width: 45px;
+      height: 55px;
+
+      background: #c5a4dc;
+      border: 3px solid #685967;
+
+      border-radius: 60% 40% 55% 45%;
+
+      top: 10px;
+    }
+
+    .ear.left {
+      left: 25px;
+      transform: rotate(-20deg);
+    }
+
+    .ear.right {
+      right: 25px;
+      transform: rotate(20deg);
+    }
+
+    .eye {
+      position: absolute;
+
+      width: 9px;
+      height: 14px;
+
+      background: #514456;
+      border-radius: 50%;
+
+      top: 55px;
+    }
+
+    .eye.left {
+      left: 23px;
+    }
+
+    .eye.right {
+      right: 23px;
+    }
+
+    .mouth {
+      position: absolute;
+
+      width: 16px;
+      height: 9px;
+
+      left: 39px;
+      top: 68px;
+
+      border-bottom: 3px solid #514456;
+      border-radius: 50%;
+    }
+
+    .flower {
+      position: absolute;
+      right: 0;
+      bottom: 5px;
+      font-size: 38px;
+    }
+
+    /* ---------- STORY ---------- */
+
+    .story-text {
+      max-width: 600px;
+      margin: auto;
+    }
+
+    .story-text p {
+      margin-bottom: 20px;
+    }
+
+    .highlight {
+      color: #ad719d;
+      font-weight: bold;
+    }
+
+    /* ---------- CARDS ---------- */
+
+    .reason-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+      margin: 30px 0;
+    }
+
+    .reason {
+      padding: 24px 18px;
+
+      background: rgba(255,255,255,.7);
+
+      border-radius: 25px;
+      border: 1px solid #efd8e7;
+
+      transition: .3s;
+    }
+
+    .reason:hover {
+      transform: translateY(-6px);
+    }
+
+    .reason .emoji {
+      font-size: 38px;
+      margin-bottom: 12px;
+    }
+
+    .reason h3 {
+      color: #806382;
+      margin-bottom: 8px;
+    }
+
+    .reason p {
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    /* ---------- LETTER ---------- */
+
+    .letter {
+      text-align: left;
+
+      background: #fffafc;
+
+      border-radius: 25px;
+      padding: 30px;
+
+      border: 1px dashed #dcaecb;
+
+      box-shadow: inset 0 0 25px rgba(230,190,215,.15);
+    }
+
+    .letter p {
+      margin-bottom: 18px;
+    }
+
+    .signature {
+      text-align: right;
+      color: #a07199;
+      font-weight: bold;
+    }
+
+    /* ---------- FINAL ---------- */
+
+    .final-message {
+      padding: 35px 20px;
+    }
+
+    .big-heart {
+      font-size: 75px;
+      animation: heartBeat 1.5s infinite;
+      margin: 20px;
+    }
+
+    @keyframes heartBeat {
+      50% {
+        transform: scale(1.15);
+      }
+    }
+
+    .final-note {
+      max-width: 600px;
+      margin: auto;
+    }
+
+    /* ---------- FLOATING HEARTS ---------- */
+
+    .floating {
+      position: fixed;
+      pointer-events: none;
+      z-index: 10;
+
+      animation: floatUp 3s ease-out forwards;
+    }
+
+    @keyframes floatUp {
+      0% {
+        opacity: 0;
+        transform: translateY(0) scale(.6);
+      }
+
+      15% {
+        opacity: 1;
+      }
+
+      100% {
+        opacity: 0;
+        transform: translateY(-220px) scale(1.3) rotate(20deg);
+      }
+    }
+
+    /* ---------- MOBILE ---------- */
+
+    @media(max-width:600px) {
+
+      .card {
+        padding: 35px 18px;
+      }
+
+      .reason-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .letter {
+        padding: 22px;
+      }
+
+      p {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- BACKGROUND -->
+  <div class="background">
+
+    <div class="cloud one"></div>
+    <div class="cloud two"></div>
+    <div class="cloud three"></div>
+
+    <div class="star">✦</div>
+    <div class="star">✧</div>
+    <div class="star">✦</div>
+    <div class="star">✧</div>
+
+  </div>
+
+
+  <!-- ========================= -->
+  <!-- SECTION 1 : INTRO -->
+  <!-- ========================= -->
+
+  <section class="screen" id="intro">
+
+    <div class="card">
+
+      <div class="small-title">
+        A little something for
+      </div>
+
+      <h1>Mahi 🌸</h1>
+
+      <div class="doodle">
+
+        <div class="ear left"></div>
+        <div class="ear right"></div>
+
+        <div class="head">
+
+          <div class="eye left"></div>
+          <div class="eye right"></div>
+
+          <div class="mouth"></div>
+
+        </div>
+
+        <div class="flower">
+          🌷
+        </div>
+
+      </div>
+
+      <p class="intro-subtitle">
+        Mujhe nahi pata tum is website ko dekh kar kya bologi...
+        lekin ek chhoti si request hai.
+        <br><br>
+        <b>Thoda time lekar poora dekhna. 😌</b>
+      </p>
+
+      <br>
+
+      <button onclick="nextSection('intro','hello')">
+        Okay... 👀
+      </button>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- ========================= -->
+  <!-- SECTION 2 -->
+  <!-- ========================= -->
+
+  <section class="screen hidden" id="hello">
+
+    <div class="card">
+
+      <div class="small-title">
+        Before the actual surprise...
+      </div>
+
+      <h2>Ek baat bolu? 🌷</h2>
+
+      <div class="story-text">
+
+        <p>
+          Kabhi-kabhi life mein kuch log bahut normally enter hote hain.
+          Pehle bas ek normal si baat hoti hai...
+        </p>
+
+        <p>
+          Phir dheere-dheere pata chalta hai ki
+          <span class="highlight">
+            unse baat karna achha lagne laga hai.
+          </span>
+        </p>
+
+        <p>
+          Aur bina pata chale woh normal si friendship
+          thodi si special ban jaati hai. ✨
+        </p>
+
+        <p>
+          Tumhare saath bhi kuch aisa hi hua.
+        </p>
+
+      </div>
+
+      <br>
+
+      <button onclick="nextSection('hello','friendship')">
+        Hmm... continue 👀
+      </button>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- ========================= -->
+  <!-- SECTION 3 -->
+  <!-- ========================= -->
+
+  <section class="screen hidden" id="friendship">
+
+    <div class="card">
+
+      <div class="small-title">
+        Friendship appreciation section
+      </div>
+
+      <h2>Why you're a good friend 💗</h2>
+
+      <p>
+        Obviously koi official list nahi hai 😭
+        <br>
+        But agar hoti, toh shayad kuch aisi hoti...
+      </p>
+
+
+      <div class="reason-grid">
+
+        <div class="reason">
+
+          <div class="emoji">😂</div>
+
+          <h3>Hasi-mazaak</h3>
+
+          <p>
+            Tumhare saath random conversations bhi
+            boring nahi lagti.
+          </p>
+
+        </div>
+
+
+        <div class="reason">
+
+          <div class="emoji">🌸</div>
+
+          <h3>Good Vibes</h3>
+
+          <p>
+            Tumhari presence mein ek alag hi
+            comfortable wali vibe hai.
+          </p>
+
+        </div>
+
+
+        <div class="reason">
+
+          <div class="emoji">✨</div>
+
+          <h3>Random Moments</h3>
+
+          <p>
+            Kabhi-kabhi chhoti si baat bhi
+            yaad reh jaati hai.
+          </p>
+
+        </div>
+
+
+        <div class="reason">
+
+          <div class="emoji">🫶</div>
+
+          <h3>Simply You</h3>
+
+          <p>
+            Sabse important reason:
+            tum bas tum ho.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <button onclick="nextSection('friendship','letter')">
+        Aur bhi hai... 💌
+      </button>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- ========================= -->
+  <!-- SECTION 4 : LETTER -->
+  <!-- ========================= -->
+
+  <section class="screen hidden" id="letter">
+
+    <div class="card">
+
+      <div class="small-title">
+        Okay... now the actual message
+      </div>
+
+      <h2>Dear Mahi 🌷</h2>
+
+
+      <div class="letter">
+
+        <p>
+          Honestly, mujhe koi bada reason nahi chahiye tha
+          ye website banane ka.
+        </p>
+
+        <p>
+          Bas kabhi-kabhi mann karta hai ki jo log important hote hain,
+          unko bata diya jaye ki
+          <b>haan, tum important ho.</b>
+        </p>
+
+        <p>
+          Aur tumhari friendship mere liye genuinely special hai.
+        </p>
+
+        <p>
+          Tumse baat karna, random cheezon par hasna,
+          stupid jokes share karna,
+          aur kabhi-kabhi bina kisi proper topic ke bhi baat karna...
+          ye sab chhoti cheezein hain,
+          but somehow achhi memories ban jaati hain. ✨
+        </p>
+
+        <p>
+          Shayad tumhe ye sab normal lage,
+          but sometimes normal moments hi sabse achhe hote hain.
+        </p>
+
+        <p>
+          So...
+          <br><br>
+
+          <b>
+            Thank you for being such a good friend, Mahi. 💗
+          </b>
+        </p>
+
+        <p>
+          Aur haan, agar kabhi tumhe lage ki
+          "ye website banane ki kya zarurat thi?"
+          toh answer simple hai:
+        </p>
+
+        <p>
+          <span class="highlight">
+            Zarurat nahi thi.
+            Bas mann tha. 😌🌸
+          </span>
+        </p>
+
+        <div class="signature">
+          — From a friend who appreciates you ✨
+        </div>
+
+      </div>
+
+      <br><br>
+
+      <button onclick="nextSection('letter','final')">
+        Last one... 🌙
+      </button>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- ========================= -->
+  <!-- SECTION 5 : FINAL -->
+  <!-- ========================= -->
+
+  <section class="screen hidden" id="final">
+
+    <div class="card final-message">
+
+      <div class="small-title">
+        One last thing...
+      </div>
+
+      <div class="big-heart">
+        💗
+      </div>
+
+      <h2>
+        Mahi, stay the same. 🌸
+      </h2>
+
+      <div class="final-note">
+
+        <p>
+          Life mein bahut log milte hain,
+          kuch thode time ke liye,
+          kuch zyada time ke liye.
+        </p>
+
+        <br>
+
+        <p>
+          Bas meri wish hai ki
+          hamari ye friendship bhi
+          aise hi random,
+          funny,
+          comfortable
+          aur achhi bani rahe. ✨
+        </p>
+
+        <br>
+
+        <p>
+          No big promises.
+          No complicated lines.
+          Bas ek simple si friendship
+          jo genuinely achhi hai. 🫶
+        </p>
+
+        <br>
+
+        <p>
+          And yes...
+        </p>
+
+        <br>
+
+        <h2>
+          Thank you, Mahi. 🌷
+        </h2>
+
+        <p>
+          For all the laughs,
+          conversations,
+          random moments
+          and good vibes.
+        </p>
+
+        <br>
+
+        <p>
+          <b>
+            You are a pretty awesome friend. ✨
+          </b>
+        </p>
+
+      </div>
+
+      <br><br>
+
+      <button id="surpriseBtn" onclick="celebrate()">
+      One more surprise ✨
+      </button>
+
+      <p id="ending" class="hidden" style="margin-top:25px;">
+        Bas itna hi tha... 😭😂
+        <br><br>
+        Ab smile kar dena.
+        Mission successful. 🌸💗✨
+      </p>
+
+    </div>
+
+  </section>
+
+
+
+  <script>
+
+    function nextSection(current, next) {
+
+      document.getElementById(current).classList.add("hidden");
+
+      const nextElement = document.getElementById(next);
+
+      nextElement.classList.remove("hidden");
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+
+      createHearts();
+
+    }
+
+
+    function createHearts() {
+
+      const symbols = [
+        "💗",
+        "🌸",
+        "✨",
+        "💖",
+        "🌷",
+        "⭐"
+      ];
+
+      for (let i = 0; i < 14; i++) {
+
+        const heart = document.createElement("div");
+
+        heart.className = "floating";
+
+        heart.innerText =
+          symbols[Math.floor(Math.random() * symbols.length)];
+
+        heart.style.left =
+          Math.random() * 100 + "vw";
+
+        heart.style.top =
+          (60 + Math.random() * 30) + "vh";
+
+        heart.style.fontSize =
+          (18 + Math.random() * 18) + "px";
+
+        heart.style.animationDelay =
+          Math.random() * .8 + "s";
+
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+          heart.remove();
+        }, 3500);
+
+      }
+
+    }
+
+
+    function celebrate() {
+
+      document.getElementById("ending")
+        .classList.remove("hidden");
+
+      createHearts();
+
+      setTimeout(createHearts, 700);
+      setTimeout(createHearts, 1400);
+
+    }
+
+  </script>
+
+</body>
+</html>
