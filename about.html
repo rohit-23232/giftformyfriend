@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="A heartfelt multi-page friendship website.">
+<title>About Our Friendship ❤️</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="hearts"></div>
+
+<nav class="nav">
+  <a class="logo" href="index.html">Forever Friends ❤️</a>
+  <div>
+    <button class="menu-toggle" aria-label="Open menu" onclick="toggleMenu()">☰</button>
+    <div class="navlinks">
+      <a href="index.html" data-i18n="nav_home">Home</a>
+      <a href="about.html" data-i18n="nav_about">About</a>
+      <a href="memories.html" data-i18n="nav_memories">Memories</a>
+      <a href="letter.html" data-i18n="nav_letter">Letter</a>
+      <a href="gallery.html" data-i18n="nav_gallery">Gallery</a>
+      <a href="final.html" data-i18n="nav_final">Final</a>
+      <button class="lang" data-lang="en">English</button>
+      <button class="lang" data-lang="hi">हिन्दी</button>
+    </div>
+  </div>
+</nav>
+<main class="reveal">
+<section class="section center">
+ <h2 data-i18n="about_title">Why You Mean So Much</h2>
+ <p class="lead" data-i18n="about_sub">A few simple reasons, even though a real list would be much longer.</p>
+ <div class="grid">
+  <article class="card"><div class="icon">🫶</div><h3 data-i18n="about_1">Always There</h3><p data-i18n="about_1p">Thank you for being someone I can talk to, laugh with, and count on.</p></article>
+  <article class="card"><div class="icon">😂</div><h3 data-i18n="about_2">Beautiful Chaos</h3><p data-i18n="about_2p">The random jokes, silly moments, and unexpected adventures make our friendship unforgettable.</p></article>
+  <article class="card"><div class="icon">❤️</div><h3 data-i18n="about_3">Just Being You</h3><p data-i18n="about_3p">You never have to pretend around me. Your real, honest self is more than enough.</p></article>
+ </div>
+</section>
+<div class="page-nav">
+  <a class="btn" href="index.html">← <span data-i18n="nav_home">Back</span></a>
+  <a class="btn" href="memories.html" data-i18n="nav_memories">Next →</a>
+</div>
+</main>
+<footer data-i18n="footer">Made with friendship, memories & lots of ❤️</footer>
+<script src="script.js"></script>
+</body>
+</html>
